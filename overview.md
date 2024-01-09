@@ -69,6 +69,7 @@
 
 ### Multiprogramming
 
+- The objective of multiprogramming is to have some process running at all times, to maximize CPU utilization.
 - Multiprogramming increases CPU utilization and throughput by organizing jobs so CPU always has one to execute.
 - Multiple programs are loaded into the computer's memory simultaneously, and the CPU switches between them rapidly.
 
