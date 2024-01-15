@@ -108,3 +108,53 @@ Processes executing concurrently in the operating system may be either `independ
     - `Boundeed` Buffer (fixed Buffer size; producers wait if full; consumer wait if empty)
 
 ### Message Passing
+
+- It is a mechanism to allow processes to communicate without shared address memory.
+- It will be useful where communicating processes reside in different networks
+- **Two Operations:** `Send` and `Receive` 
+- **Size Type:** `Fixed` and `Variable`
+
+- To communicate between processes, a process must first create a `communication link`. This can be implemented by three methods:
+    - Direct or indirect communication (Naming System)
+    - Synchronous or asynchronous communication
+    - Automatic or explicit buffering
+
+#### Direct Communication
+
+- Each process that wants to communicate must explicitly name the recipient or sender of the communication.
+- `Symmetric` Addressing: send (P, message) and receive (Q, message) [Both sender and recipient names are required]
+- `Assymmetric` Addressing: send (P, message) and receive (variable_id, message) [recipient name is not required]
+
+#### Indirect Communication
+
+- The messages are sent to and received from mailboxes, or ports.
+- A mailbox may be owned either by a process or by the operating system.
+- Two processes can communicate only if the processes have a shared mailbox
+    - send(A, message): Send a message to mailbox A.
+    - receive (A, message): Receive a message from mailbox A.
+
+#### Synchronous / Asynchronous Communication
+
+- Blocking send: sending process is blocked until the message is received by the receiving process or by the mailbox.
+- Non-blocking send: sending process sends the message and resumes operation.
+- Blocking receive: receiving process is blocked until the message is sent by the sending process or by the mailbox.
+- Non-blocking receive: receiving process receives the message or null and resumes operation.
+
+#### Automatic / Explicit Buffering
+- messages exchanged by communicating processes reside in a temporary queue.
+- It can be implemented in 3 ways:
+    - `Zero Capacity`: The buffer length is zero and the sender is blocked.
+    - `Bounded Capacity`: The buffer length is N, and N messages can be queued. If Queue is full, sender is blocked
+    - `Unbounded Capacity`: The buffer length is infinite and the sender is NEVER blocked.
+
+
+## Remote Procedure Calls
+
+- A remote procedure call (RPC) is a method of interprocess communication that allows a program to call a procedure or function in another address space.
+- It uses a message-passing communication scheme to provide remote service.
+- It allows a program to call a procedure or function in another address space.
+
+#### Issues faced by RPC:
+
+- Data Representations (Endianess in 32-bit / 64-bit). Solution: external data representation (XDR).
+- Network Issue. Solution: 'Exactly Once' Functionality
