@@ -158,3 +158,31 @@ Processes executing concurrently in the operating system may be either `independ
 
 - Data Representations (Endianess in 32-bit / 64-bit). Solution: external data representation (XDR).
 - Network Issue. Solution: 'Exactly Once' Functionality
+
+## Threads
+
+- Thread is a basic unit of CPU utilisation (thread ID, program counter, register set, stack)
+- It shares code sections, data section, open files, open sockets with  other threads.\
+- Benefits: Responsiveness, Resource Sharing, Economy, Multiprocessor Utilisation
+
+<img src="./assets/image-11.png" style="width: 55%; height: auto;">
+
+- **Types:** `User` and `Kernel` Threads 
+    - User Threads: managed without kernel support.
+    - Kernel Threads: managed directly by the kernel.
+
+- Relation b/w user & kernel threads
+    - `Many-to-On`e: Many user threads map to one kernel thread. Limitation: Concurrency
+    - `One-to-One`: One user thread maps to one kernel thread. Advantage: utilise multiprocessor resources.
+    - `Many-to-Many`: Many user threads map to many kernel threads.
+
+### HyperThreading / Simultaneous Multithreading (SMT)
+
+- Hyperthreaded systems allow their processor cores' resources to become multiple logical processors for performance.
+- It is a form of parallelism that allows multiple threads to run on a single core.
+
+### Fork() and Exec() System Calls
+
+- `Fork()`: creates a separate, duplicate process and returns a new process ID (PID) to the new process. 
+- `Exec()`: creates a new process and replaces the current process with it.
+ 
