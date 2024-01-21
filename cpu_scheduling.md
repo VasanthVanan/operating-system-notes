@@ -12,7 +12,7 @@
     - I/O burst time is the time taken by the process to wait for I/O.
 - Process starts with CPU burst followed by I/O burst followed by CPU burst and so on; finally terminated by CPU burst
 
-    <img src="./assets/image-12.png" style="width: 20%; height: 20%;">
+    <img src="./assets/image-12.png" style="width: 30%; height: 30%;">
 
 ## Preemptive / Non-preemptive Scheduling
 
@@ -35,8 +35,37 @@ CPU Scheduling takes place in the following cases:
 - `Throughput`: Throughput is the number of processes that are completed during a given time period.
 - `Turnaround Time`: It is the time taken by a process from the time it enters the ready queue to the time it completes its execution.
 - `Waiting Time`: Waiting time is the time taken by a process from the time it enters the ready queue to the time it is assigned to the CPU.
-- `Response Time`: Response time is the time taken by a process from the time it enters the ready queue to the time it is assigned to the CPU. (slight delay after opening a video)
+- `Response Time`: Response time is the time taken by a process from the time it enters the ready queue to the time it is assigned to the CPU. (Example: slight delay after opening a application)
 
 
+## First-Come, First-Served (FCFS) Scheduling
 
+- It is the simplest non-preemptive CPU scheduling algorithm that requests the CPU for the process that arrives first.
+- Implementation is managed by a FIFO queue data structure. `TAIL--[ ]--[ ]--[ ]--[ ]--HEAD`
+- when a process enters ready queue, PCB is added to the tail of the queue.
+- when a CPU is free, the first process in the queue is selected and assigned to the CPU.
+- Average waiting time: LONG (depending upon the order of the arrival)
+- `Limitation`: Allowing one process to run the CPU for an extended period.
 
+## Shortest-Job-First (SJF) Scheduling
+
+- It is the premptive or non-preemptive CPU scheduling algorithm that selects the process with the shortest next CPU burst time.
+- If two processes have the same burst time, then the process with the lowest process number is selected.
+- Average waiting time: SHORT 
+- `Limitation`: difficulty in identifying the length of the next CPU burst time.
+
+## Priority Scheduling
+
+- It is the preemptive or non-preemptive CPU scheduling algorithm that selects the process with the highest priority.
+- Equal priority processes are scheduled in a FCFS fashion.
+- preemptive scheduling will preempt if the priority of the newly arrived process is higher than the currently running process.
+- non-preemptive scheduling will append the process to the end of the queue.
+- `Limitation`: Indefinite Blocking / Starvation, high-priority processes prevent lower-priority processes from running.
+- `Solution`: Use Aging technique to increase the priority of the waiting process after every time slice. 
+
+## Round Robin Scheduling
+
+- It is a preemptive CPU scheduling algorithm (time sharing systems) that selects the process with the shortest CPU burst time and allocates the CPU for that process for a time interval called time quantum.
+- `Time Quantum`: The time period during which the process will get a chance to execute on the CPU.
+- The CPU scheduler goes around the ready queue, allocating the CPU to each process for a time interval of up to 1 time quantum until every process completes.
+- `Limitation`: High Turnaround time, Inefficiency for I/O bound processes.
